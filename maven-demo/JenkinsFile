@@ -11,18 +11,18 @@ stage(‘GIT Checkout’){
 	steps{
 		checkout([$class: ‘GitSCM’, branches: [[name: ‘*/master’]],
 soGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: 
-[], userRemoteConfigs: [[url: 'https://github.com/flennen/java-helloworld.git’]]])
+[], userRemoteConfigs: [[url: 'https://github.com/dcostello90/MavenBuildDemo.git’]]])
 }
 	}
 stage('Build') {
 		steps {
-sh 'mvn -f Hello-World/pom.xml clean install'
+sh 'mvn -f maven-demo/pom.xml clean install'
 		}
 }
 	
 stage('Run Tests') {
 steps {
-sh 'mvn -f Test-Hello-World/pom.xml test'
+sh 'mvn -f Test-maven-demo/pom.xml test'
 }
 }
 }
